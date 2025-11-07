@@ -258,14 +258,12 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 Desenvolvedor apaixonado por criar soluções escaláveis e de alta qualidade, com foco em arquitetura limpa, segurança e experiência do usuário.
 
 - 🌐 **GitHub**: [@luiznascimentodev](https://github.com/luiznascimentodev)
-- 💼 **LinkedIn**: [Conecte-se comigo](https://linkedin.com/in/luiznascimentodev)
+- 💼 **LinkedIn**: [Conecte-se comigo](https://www.linkedin.com/in/luiz-felippe-nascimento/)
 - 📧 **Email**: luiznascdev@gmail.com
 
 ---
 
 <div align="center">
-
-**Feito com ❤️ e muito ☕**
 
 ⭐ Se este projeto foi útil para você, considere dar uma estrela!
 
