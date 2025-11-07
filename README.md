@@ -1,0 +1,462 @@
+<div align="center">
+
+# 📚 Plano Mestre
+
+**Sua plataforma completa de estudos inteligente**
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://www.prisma.io/)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+
+</div>
+
+---
+
+## 📖 Sobre o Projeto
+
+**Plano Mestre** é uma plataforma moderna e completa para gerenciamento de estudos, desenvolvida com as melhores práticas de arquitetura de software. O sistema oferece uma experiência intuitiva para estudantes que desejam organizar seus estudos, criar hábitos consistentes e acompanhar seu progresso de forma inteligente.
+
+### 🎯 Objetivo
+
+Facilitar o aprendizado através de ferramentas científicas comprovadas, como a técnica Pomodoro, flashcards com repetição espaçada, e análise de dados para otimizar o tempo de estudo.
+
+---
+
+## ✨ Funcionalidades Principais
+
+### 🎓 Gestão de Assuntos
+- ✅ Criação e organização de tópicos de estudo
+- ✅ Categorização por prioridade, categoria e tags
+- ✅ Sistema de cores para personalização visual
+- ✅ Acompanhamento de status (Não Iniciado, Em Progresso, Revisando, Concluído)
+
+### ⏱️ Sessões de Estudo
+- ✅ Timer Pomodoro integrado (25 minutos de foco)
+- ✅ Registro automático de tempo estudado
+- ✅ Histórico completo de sessões
+- ✅ Estatísticas de tempo por assunto
+
+### 🃏 Flashcards Inteligentes
+- ✅ Sistema de repetição espaçada (Spaced Repetition)
+- ✅ Dificuldade adaptativa (Fácil, Médio, Difícil)
+- ✅ Agendamento automático de revisões
+- ✅ Métricas de performance de memorização
+
+### 📅 Planejamento
+- ✅ Agendamento de sessões de estudo
+- ✅ Calendário visual interativo
+- ✅ Notificações de sessões agendadas
+- ✅ Gestão de prazos e deadlines
+
+### 🔥 Sistema de Hábitos
+- ✅ Criação de hábitos personalizados
+- ✅ Frequência configurável (Diário, Semanal, Customizado)
+- ✅ Acompanhamento de streaks
+- ✅ Estatísticas de completação
+
+### 📊 Analytics Avançado
+- ✅ Dashboard com métricas em tempo real
+- ✅ Análise de tempo estudado por dia/semana
+- ✅ Identificação de horários de pico
+- ✅ Insights personalizados sobre produtividade
+
+### 🔐 Segurança
+- ✅ Autenticação JWT com refresh tokens
+- ✅ Cookies httpOnly para máxima segurança
+- ✅ Rate limiting contra ataques de força bruta
+- ✅ Auditoria completa de ações (Audit Log)
+- ✅ Blacklist de tokens revogados
+- ✅ Suporte a 2FA (Two-Factor Authentication)
+
+---
+
+## 🛠️ Stack Tecnológica
+
+### Frontend
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Linguagem**: TypeScript
+- **Estilização**: Tailwind CSS 4
+- **Gerenciamento de Estado**: Zustand
+- **HTTP Client**: Axios
+- **Ícones**: Heroicons
+
+### Backend
+- **Framework**: [NestJS 11](https://nestjs.com/)
+- **Linguagem**: TypeScript
+- **ORM**: Prisma 6
+- **Banco de Dados**: PostgreSQL 15
+- **Autenticação**: JWT (Passport.js)
+- **Validação**: class-validator, class-transformer
+- **Documentação**: Swagger/OpenAPI
+- **Segurança**: Helmet, Rate Limiting (Throttler)
+
+### DevOps & Ferramentas
+- **Containerização**: Docker & Docker Compose
+- **Versionamento**: Git
+- **Linting**: ESLint
+- **Formatação**: Prettier
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+plano-mestre/
+├── frontend/                 # Aplicação Next.js
+│   ├── src/
+│   │   ├── app/             # Rotas e páginas (App Router)
+│   │   │   ├── dashboard/   # Dashboard e funcionalidades
+│   │   │   ├── login/       # Autenticação
+│   │   │   └── page.tsx     # Landing page
+│   │   ├── components/      # Componentes React reutilizáveis
+│   │   ├── lib/             # Utilitários e configurações
+│   │   ├── store/           # Estado global (Zustand)
+│   │   └── styles/          # Estilos globais
+│   └── public/              # Arquivos estáticos
+│
+├── backend/                  # API NestJS
+│   ├── src/
+│   │   ├── auth/           # Módulo de autenticação
+│   │   ├── topics/          # Gestão de assuntos
+│   │   ├── study-sessions/  # Sessões de estudo
+│   │   ├── flashcards/      # Sistema de flashcards
+│   │   ├── habits/          # Gestão de hábitos
+│   │   ├── analytics/      # Analytics e métricas
+│   │   ├── scheduled-sessions/ # Sessões agendadas
+│   │   ├── suggestions/    # Sugestões inteligentes
+│   │   └── audit/           # Auditoria de segurança
+│   ├── prisma/
+│   │   ├── schema.prisma   # Schema do banco de dados
+│   │   └── migrations/     # Migrações do Prisma
+│   └── test/                # Testes E2E
+│
+└── docker-compose.yml       # Configuração Docker
+```
+
+---
+
+## 🚀 Instalação
+
+### Pré-requisitos
+
+- Node.js 18+ e npm
+- PostgreSQL 15+ (ou Docker)
+- Git
+
+### Passo a Passo
+
+1. **Clone o repositório**
+```bash
+git clone https://github.com/seu-usuario/plano-mestre.git
+cd plano-mestre
+```
+
+2. **Configure o banco de dados**
+
+   **Opção A: Usando Docker (Recomendado)**
+   ```bash
+   docker-compose up -d
+   ```
+
+   **Opção B: PostgreSQL local**
+   - Crie um banco de dados PostgreSQL
+   - Configure a variável `DATABASE_URL` no arquivo `.env` do backend
+
+3. **Configure o Backend**
+
+   ```bash
+   cd backend
+   npm install
+   
+   # Crie o arquivo .env
+   cp .env.example .env
+   
+   # Configure as variáveis de ambiente:
+   # DATABASE_URL="postgresql://user:password@localhost:5432/plano_mestre_db"
+   # JWT_SECRET="seu-secret-super-seguro-aqui"
+   # PORT=3001
+   
+   # Execute as migrações
+   npx prisma migrate dev
+   
+   # Gere o Prisma Client
+   npx prisma generate
+   
+   # Inicie o servidor
+   npm run start:dev
+   ```
+
+4. **Configure o Frontend**
+
+   ```bash
+   cd ../frontend
+   npm install
+   
+   # Crie o arquivo .env.local
+   # NEXT_PUBLIC_API_URL=http://localhost:3001
+   
+   # Inicie o servidor de desenvolvimento
+   npm run dev
+   ```
+
+5. **Acesse a aplicação**
+
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:3001
+   - Swagger Docs: http://localhost:3001/api-docs
+
+---
+
+## 📚 Como Usar
+
+### Primeiros Passos
+
+1. **Crie uma conta**
+   - Acesse a página de cadastro
+   - Preencha seus dados
+   - Faça login
+
+2. **Crie seu primeiro assunto**
+   - No dashboard, clique em "Novo Assunto"
+   - Defina nome, categoria e prioridade
+   - Adicione tags para organização
+
+3. **Inicie uma sessão de estudo**
+   - Selecione um assunto
+   - Clique em "Iniciar Sessão"
+   - Use o timer Pomodoro para manter o foco
+
+4. **Crie flashcards**
+   - Para cada assunto, crie flashcards
+   - Revise regularmente usando o sistema de repetição espaçada
+
+5. **Acompanhe seu progresso**
+   - Visualize estatísticas no dashboard
+   - Analise seus hábitos de estudo
+   - Use os insights para otimizar seu tempo
+
+---
+
+## 🔌 API Endpoints
+
+### Autenticação
+```
+POST   /auth/register      # Registrar novo usuário
+POST   /auth/login         # Fazer login
+POST   /auth/refresh       # Renovar access token
+GET    /auth/me            # Obter dados do usuário
+POST   /auth/logout        # Fazer logout
+```
+
+### Assuntos (Topics)
+```
+GET    /topics             # Listar todos os assuntos
+POST   /topics             # Criar novo assunto
+GET    /topics/:id         # Obter assunto específico
+PATCH  /topics/:id         # Atualizar assunto
+DELETE /topics/:id         # Deletar assunto
+```
+
+### Sessões de Estudo
+```
+GET    /study-sessions     # Listar sessões
+POST   /study-sessions     # Criar nova sessão
+```
+
+### Flashcards
+```
+GET    /flashcards         # Listar flashcards
+POST   /flashcards         # Criar flashcard
+GET    /flashcards/:id     # Obter flashcard
+PATCH  /flashcards/:id     # Atualizar flashcard
+POST   /flashcards/:id/review # Revisar flashcard
+DELETE /flashcards/:id     # Deletar flashcard
+```
+
+### Hábitos
+```
+GET    /habits             # Listar hábitos
+POST   /habits             # Criar hábito
+GET    /habits/:id         # Obter hábito
+GET    /habits/:id/stats   # Estatísticas do hábito
+PATCH  /habits/:id         # Atualizar hábito
+POST   /habits/:id/complete # Completar hábito
+DELETE /habits/:id         # Deletar hábito
+```
+
+### Analytics
+```
+POST   /analytics/track    # Registrar evento
+GET    /analytics/daily    # Estatísticas diárias
+GET    /analytics/weekly   # Estatísticas semanais
+GET    /analytics/features # Uso de features
+GET    /analytics/engagement # Engajamento
+```
+
+📖 **Documentação completa**: Acesse `/api-docs` quando o backend estiver rodando
+
+---
+
+## 🎨 Screenshots
+
+### Dashboard Principal
+![Dashboard](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=Dashboard+Principal)
+
+*Visualização completa do dashboard com estatísticas, assuntos e sessões recentes*
+
+### Timer Pomodoro
+![Pomodoro](https://via.placeholder.com/800x400/10B981/FFFFFF?text=Timer+Pomodoro)
+
+*Interface do timer Pomodoro integrado para sessões de estudo focadas*
+
+### Sistema de Flashcards
+![Flashcards](https://via.placeholder.com/800x400/8B5CF6/FFFFFF?text=Sistema+de+Flashcards)
+
+*Criação e revisão de flashcards com repetição espaçada*
+
+### Analytics
+![Analytics](https://via.placeholder.com/800x400/EC4899/FFFFFF?text=Analytics+Avançado)
+
+*Dashboard de analytics com métricas detalhadas de produtividade*
+
+---
+
+## 🔒 Segurança
+
+O Plano Mestre implementa múltiplas camadas de segurança:
+
+### Autenticação e Autorização
+- ✅ JWT tokens com expiração curta (15 minutos)
+- ✅ Refresh tokens com expiração longa (7 dias)
+- ✅ Tokens armazenados em cookies httpOnly
+- ✅ Blacklist de tokens revogados
+- ✅ Validação de propriedade de recursos (multilocação)
+
+### Proteção contra Ataques
+- ✅ Rate limiting (100 requisições/minuto)
+- ✅ Proteção contra força bruta
+- ✅ Helmet.js para headers de segurança
+- ✅ CORS configurado adequadamente
+- ✅ Validação e sanitização de inputs
+
+### Auditoria
+- ✅ Log de todas as ações críticas
+- ✅ Rastreamento de IP e User-Agent
+- ✅ Histórico de login/logout
+- ✅ Registro de tentativas falhadas
+
+---
+
+## 🧪 Testes
+
+```bash
+# Backend - Testes unitários
+cd backend
+npm run test
+
+# Backend - Testes E2E
+npm run test:e2e
+
+# Backend - Cobertura de testes
+npm run test:cov
+```
+
+---
+
+## 🏗️ Arquitetura
+
+### Princípios Aplicados
+
+- **Clean Architecture**: Separação clara de responsabilidades
+- **SOLID**: Princípios de design orientado a objetos
+- **DRY**: Evitar repetição de código
+- **KISS**: Manter a simplicidade
+- **YAGNI**: Não implementar funcionalidades desnecessárias
+
+### Padrões de Design
+
+- **Repository Pattern**: Abstração de acesso a dados
+- **Service Layer**: Lógica de negócio isolada
+- **DTO Pattern**: Transferência de dados tipada
+- **Guard Pattern**: Proteção de rotas
+- **Strategy Pattern**: Autenticação flexível
+
+---
+
+## 📈 Roadmap
+
+### Próximas Funcionalidades
+
+- [ ] Integração com calendários externos (Google Calendar, Outlook)
+- [ ] Modo offline com sincronização
+- [ ] App mobile (React Native)
+- [ ] Gamificação (badges, conquistas)
+- [ ] Comunidade e compartilhamento de flashcards
+- [ ] Integração com IA para sugestões inteligentes
+- [ ] Exportação de dados (PDF, CSV)
+- [ ] Temas personalizáveis
+- [ ] Notificações push
+- [ ] Modo escuro aprimorado
+
+---
+
+## 🤝 Contribuindo
+
+Contribuições são sempre bem-vindas! Siga estes passos:
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+### Padrões de Código
+
+- Siga os princípios SOLID
+- Escreva testes para novas funcionalidades
+- Mantenha a cobertura de testes acima de 80%
+- Documente funções complexas
+- Use commits semânticos
+
+---
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+**Luiz Nascimento**
+
+- GitHub: [@seu-usuario](https://github.com/seu-usuario)
+- LinkedIn: [Seu Perfil](https://linkedin.com/in/seu-perfil)
+- Email: seu.email@exemplo.com
+
+---
+
+## 🙏 Agradecimentos
+
+- Comunidade NestJS
+- Comunidade Next.js
+- Todos os contribuidores de código aberto
+- Estudantes que testam e fornecem feedback
+
+---
+
+<div align="center">
+
+**Feito com ❤️ e muito ☕**
+
+⭐ Se este projeto foi útil para você, considere dar uma estrela!
+
+[⬆ Voltar ao topo](#-plano-mestre)
+
+</div>
+

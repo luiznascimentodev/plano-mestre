@@ -1,0 +1,321 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum StudyStatus{
+  NOT_STARTED
+  IN_PROGRESS
+  REVIEWING
+  COMPLETED
+}
+
+enum FlashcardDifficulty{
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum TopicPriority{
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum HabitFrequency{
+  DAILY
+  WEEKLY
+  CUSTOM
+}
+
+enum HabitType{
+  STUDY_TIME
+  SESSIONS_COUNT
+  TOPICS_COMPLETED
+  REVIEWS_DONE
+  CUSTOM
+}
+
+enum AnalyticsEventType{
+  // Sessões de Estudo
+  STUDY_SESSION_STARTED
+  STUDY_SESSION_COMPLETED
+  STUDY_SESSION_PAUSED
+  STUDY_SESSION_STOPPED
+
+  // Assuntos
+  TOPIC_CREATED
+  TOPIC_UPDATED
+  TOPIC_DELETED
+  TOPIC_VIEWED
+
+  // Flashcards
+  FLASHCARD_CREATED
+  FLASHCARD_REVIEWED
+  FLASHCARD_DELETED
+
+  // Sessões Agendadas
+  SESSION_SCHEDULED
+  SESSION_COMPLETED
+  SESSION_CANCELLED
+
+  // Hábitos
+  HABIT_CREATED
+  HABIT_COMPLETED
+  HABIT_UPDATED
+  HABIT_DELETED
+
+  // Navegação
+  PAGE_VIEWED
+  FEATURE_ACCESSED
+
+  // Interações
+  BUTTON_CLICKED
+  FORM_SUBMITTED
+  SEARCH_PERFORMED
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String?
+  password String?
+  twoFactorSecret String? // Para 2FA
+  twoFactorEnabled Boolean @default(false)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  topics Topic[]
+  studySessions StudySession[]
+  flashcards Flashcard[]
+  scheduledSessions ScheduledSession[]
+  habits Habit[]
+  habitCompletions HabitCompletion[]
+  analyticsEvents AnalyticsEvent[]
+  refreshTokens RefreshToken[]
+  auditLogs AuditLog[]
+}
+
+model Topic {
+  id Int @id @default(autoincrement())
+  name String
+  status StudyStatus @default(NOT_STARTED)
+  notes String? @db.Text
+
+  // Campos opcionais para organização
+  category String?
+  priority TopicPriority?
+  dueDate DateTime?
+  description String? @db.Text
+  tags String? // Tags separadas por vírgula
+  color String? // Cor em hex para personalização visual
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  sessions StudySession[]
+  flashcards Flashcard[]
+  scheduledSessions ScheduledSession[]
+  habits Habit[]
+
+  @@index([userId])
+  @@index([category])
+  @@index([priority])
+  @@index([dueDate])
+}
+
+model StudySession{
+  id Int @id @default(autoincrement())
+
+  duration Int
+
+  completedAt DateTime @default(now())
+
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  topicId Int
+  topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+}
+
+model Flashcard {
+  id Int @id @default(autoincrement())
+  front String @db.Text
+  back String @db.Text
+  difficulty FlashcardDifficulty @default(MEDIUM)
+  nextReview DateTime @default(now())
+  reviewCount Int @default(0)
+  lastReviewed DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  topicId Int
+  topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([topicId])
+  @@index([nextReview])
+}
+
+model ScheduledSession {
+  id Int @id @default(autoincrement())
+  scheduledAt DateTime
+  duration Int
+  notes String? @db.Text
+  isCompleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  topicId Int
+  topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([topicId])
+  @@index([scheduledAt])
+}
+
+model Habit {
+  id Int @id @default(autoincrement())
+  name String
+  description String? @db.Text
+  type HabitType @default(CUSTOM)
+  frequency HabitFrequency @default(DAILY)
+  targetValue Int? // Valor alvo (ex: 25 minutos, 3 sessões)
+  color String? // Cor em hex para personalização
+  icon String? // Ícone/emoji para o hábito
+  isActive Boolean @default(true)
+  startDate DateTime @default(now())
+  endDate DateTime? // Data limite opcional
+
+  // Configurações de frequência customizada
+  customDays String? // Dias da semana (ex: "1,3,5" para seg, qua, sex)
+
+  // Relacionamento com assunto (opcional)
+  topicId Int?
+  topic Topic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  completions HabitCompletion[]
+
+  @@index([userId])
+  @@index([topicId])
+  @@index([isActive])
+  @@index([startDate])
+}
+
+model HabitCompletion {
+  id Int @id @default(autoincrement())
+  completedAt DateTime @default(now())
+  value Int? // Valor completado (ex: minutos estudados, sessões feitas)
+  notes String? @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  habitId Int
+  habit Habit @relation(fields: [habitId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([habitId])
+  @@index([completedAt])
+}
+
+model AnalyticsEvent {
+  id Int @id @default(autoincrement())
+  eventType AnalyticsEventType
+  entityType String? // "topic", "flashcard", "session", etc.
+  entityId Int? // ID da entidade relacionada
+  metadata Json? // Dados adicionais em JSON
+  sessionId String? // ID da sessão do usuário
+  userAgent String? // User agent do navegador
+  ipAddress String? // IP do usuário (opcional, para privacidade)
+  duration Int? // Duração em segundos (para ações que têm duração)
+
+  createdAt DateTime @default(now())
+
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([eventType])
+  @@index([entityType])
+  @@index([createdAt])
+  @@index([userId, eventType, createdAt])
+}
+
+model RefreshToken {
+  id Int @id @default(autoincrement())
+  token String @unique
+  userId Int
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  revokedAt DateTime?
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([token])
+  @@index([expiresAt])
+}
+
+model TokenBlacklist {
+  id Int @id @default(autoincrement())
+  token String @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  
+  @@index([token])
+  @@index([expiresAt])
+}
+
+model AuditLog {
+  id Int @id @default(autoincrement())
+  action String // Ex: "LOGIN", "LOGOUT", "PASSWORD_CHANGE", "USER_UPDATE", etc.
+  entityType String? // Ex: "User", "Topic", etc.
+  entityId Int?
+  metadata Json? // Dados adicionais
+  ipAddress String?
+  userAgent String?
+  success Boolean @default(true)
+  errorMessage String?
+  
+  createdAt DateTime @default(now())
+  
+  userId Int?
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@index([userId, action, createdAt])
+}
