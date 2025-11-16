@@ -4,6 +4,7 @@
 
 **Plataforma full-stack de gerenciamento de estudos com arquitetura escalável**
 
+
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
@@ -21,9 +22,10 @@
 📚 Plano Mestre
 <!-- PROJECT_TITLE_END -->
 O Plano Mestre é uma plataforma de gerenciamento de estudos full-stack e pronta para produção, projetada para otimizar o aprendizado com ferramentas científicas. O projeto integra um timer Pomodoro, flashcards com repetição espaçada (Spaced Repetition) e um dashboard de analytics em tempo real, tudo construído sobre uma stack moderna com NestJS (backend) e Next.js (frontend). Este repositório demonstra uma aplicação robusta de Clean Architecture, princípios SOLID e práticas de segurança de nível enterprise, incluindo autenticação JWT com refresh tokens e logs de auditoria.
+<!-- PROJECT_TAG_END -->
 
-**Stack**: Next.js 16, NestJS 11, TypeScript, PostgreSQL, Prisma, Docker
 
+<!-- PROJECT_HIGHLIGHTS_START -->
 **Destaques**:
 
 - ✅ Clean Architecture + SOLID principles
@@ -31,11 +33,9 @@ O Plano Mestre é uma plataforma de gerenciamento de estudos full-stack e pronta
 - ✅ Testes E2E completos
 - ✅ Documentação Swagger/OpenAPI
 - ✅ 36.138+ linhas de código TypeScript
+<!-- PROJECT_HIGHLIGHTS_END -->
 
-[🔗 Ver no GitHub](https://github.com/luiznascimentodev/plano-mestre)
 
-<!-- PROJECT_TAG_END -->
----
 
 ## ✨ Funcionalidades
 
@@ -47,7 +47,7 @@ O Plano Mestre é uma plataforma de gerenciamento de estudos full-stack e pronta
 - **Analytics**: Dashboard com métricas em tempo real e insights de produtividade
 
 ---
-
+<!-- PROJECT_TECH_START -->
 ## 🛠️ Stack Tecnológica
 
 ### Frontend
@@ -72,6 +72,7 @@ O Plano Mestre é uma plataforma de gerenciamento de estudos full-stack e pronta
 - Conventional Commits
 
 ---
+<!-- PROJECT_TECH_END -->
 
 ## 📁 Estrutura do Projeto
 
