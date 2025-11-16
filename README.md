@@ -5,12 +5,14 @@
 **Plataforma full-stack de gerenciamento de estudos com arquitetura escalável**
 
 
+
+<!-- PROJECT_TECH_START -->
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://www.prisma.io/)
-
+<!-- PROJECT_TECH_END -->
 </div>
 
 ---
@@ -26,8 +28,6 @@ O Plano Mestre é uma plataforma de gerenciamento de estudos full-stack e pronta
 
 
 <!-- PROJECT_HIGHLIGHTS_START -->
-**Destaques**:
-
 - ✅ Clean Architecture + SOLID principles
 - ✅ Autenticação JWT com refresh tokens
 - ✅ Testes E2E completos
@@ -47,7 +47,7 @@ O Plano Mestre é uma plataforma de gerenciamento de estudos full-stack e pronta
 - **Analytics**: Dashboard com métricas em tempo real e insights de produtividade
 
 ---
-<!-- PROJECT_TECH_START -->
+
 ## 🛠️ Stack Tecnológica
 
 ### Frontend
@@ -72,7 +72,7 @@ O Plano Mestre é uma plataforma de gerenciamento de estudos full-stack e pronta
 - Conventional Commits
 
 ---
-<!-- PROJECT_TECH_END -->
+
 
 ## 📁 Estrutura do Projeto
 
