@@ -1,7 +1,7 @@
 <div align="center">
-
+<!-- PROJECT_TITLE_START -->
 # 📚 Plano Mestre
-
+<!-- PROJECT_TITLE_END -->
 **Plataforma full-stack de gerenciamento de estudos com arquitetura escalável**
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
