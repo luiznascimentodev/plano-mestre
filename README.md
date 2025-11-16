@@ -14,10 +14,27 @@
 
 ---
 
-## 📖 Sobre
+<!-- PROJECT_TAG_START -->
 
-Plano Mestre é uma plataforma completa de gerenciamento de estudos que integra técnicas científicas de aprendizado (Pomodoro, Spaced Repetition) com análise de dados em tempo real. Desenvolvido seguindo Clean Architecture, SOLID principles e boas práticas de segurança em produção.
+## 🌟 Projeto em Destaque
 
+### 📚 Plano Mestre
+
+O Plano Mestre é uma plataforma de gerenciamento de estudos full-stack e pronta para produção, projetada para otimizar o aprendizado com ferramentas científicas. O projeto integra um timer Pomodoro, flashcards com repetição espaçada (Spaced Repetition) e um dashboard de analytics em tempo real, tudo construído sobre uma stack moderna com NestJS (backend) e Next.js (frontend). Este repositório demonstra uma aplicação robusta de Clean Architecture, princípios SOLID e práticas de segurança de nível enterprise, incluindo autenticação JWT com refresh tokens e logs de auditoria.
+
+**Stack**: Next.js 16, NestJS 11, TypeScript, PostgreSQL, Prisma, Docker
+
+**Destaques**:
+
+- ✅ Clean Architecture + SOLID principles
+- ✅ Autenticação JWT com refresh tokens
+- ✅ Testes E2E completos
+- ✅ Documentação Swagger/OpenAPI
+- ✅ 36.138+ linhas de código TypeScript
+
+[🔗 Ver no GitHub](https://github.com/luiznascimentodev/plano-mestre)
+
+<!-- PROJECT_TAG_END -->
 ---
 
 ## ✨ Funcionalidades
